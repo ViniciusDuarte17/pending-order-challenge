@@ -1,5 +1,6 @@
 import Notas from "./Notas/Notas";
 import pedidos from "./Pedidos/Pedidos";
+import PedidosPendentes from "./PedidosPendentes/PedidosPendentes";
 
 const Main = async () => {
 
@@ -7,8 +8,9 @@ const Main = async () => {
 
   const notasValidas = await Notas.listaDeNotas(pedidosOrdenados);
 
-  console.log("pedidosOrdenados", pedidosOrdenados);
-  console.log('notasValidas', notasValidas);
+  const pedidosPendentes = await PedidosPendentes.identificarPedidosPendentes(pedidosOrdenados,notasValidas)
+
+  console.log('pedidosPendentes', pedidosPendentes);
 };
 
 Main();
