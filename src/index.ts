@@ -1,14 +1,14 @@
-import pedidos from "./Pedidos/pedidos"
-
+import Notas from "./Notas/Notas";
+import pedidos from "./Pedidos/Pedidos";
 
 const Main = async () => {
 
-   console.log('Estamos na main')
+  const pedidosOrdenados = await pedidos.listaDePedidos();
 
-   const pedidosOrdenados = await pedidos.listaDePedidos()
+  const notasValidas = await Notas.listaDeNotas(pedidosOrdenados);
 
-   console.log( pedidosOrdenados)
+  console.log("pedidosOrdenados", pedidosOrdenados);
+  console.log('notasValidas', notasValidas);
+};
 
-}
-
- Main()
+Main();

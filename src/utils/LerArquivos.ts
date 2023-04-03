@@ -22,7 +22,9 @@ export class LerArquivos {
     }
 
     try {
-      const trasformaArquivoTextoParaJson = await lerTodoArquivos(caminhoDoArquivo);
+      const trasformaArquivoTextoParaJson = await lerTodoArquivos(
+        caminhoDoArquivo
+      );
       const arquivoEmJson: object[] = trasformaArquivoTextoParaJson
         .split("\n")
         .map((str) => str.trim())
