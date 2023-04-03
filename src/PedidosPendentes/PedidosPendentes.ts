@@ -10,22 +10,29 @@ class PedidosPendentes {
     const pedidosPendentes:ItemPendente[]  = []
 
     pedidos.forEach((pedido) => {
-        notas.forEach((notas) => {
+        notas.forEach((nota) => {
           if (
-            notas.número_item === pedido.número_item &&
-            notas.quantidade_produto >= Number(pedido.quantidade_produto)
+            nota.número_item === pedido.número_item &&
+            nota.quantidade_produto >= Number(pedido.quantidade_produto)
           ) {
             const itemPentende =
-              notas.quantidade_produto - Number(pedido.quantidade_produto);
+              nota.quantidade_produto - Number(pedido.quantidade_produto);
     
             if (itemPentende === 0) {
               return;
             }
+
+            const valorUnitario = pedido.valor_unitário_produto.replace(",", ".");
+            const valorTotalPedido = Number(valorUnitario) * pedido.número_item
     
             const pedidoPendentes = {
-              id: notas.id_pedido,
-              item_pendente: itemPentende,
+              id: nota.id_pedido,
+              numeroItem: nota.número_item,
+              valorTotalPedido: valorTotalPedido.toFixed(2).toString().replace('.', ','),
+              ValorTotalDeItemPentende: (itemPentende * Number(valorUnitario)).toFixed(2).toString().replace('.', ','),
+              produtoPendente: itemPentende
             };
+
             pedidosPendentes.push(pedidoPendentes)
           }
         });
@@ -34,6 +41,5 @@ class PedidosPendentes {
       return pedidosPendentes
     }
 }
-
 
 export default new PedidosPendentes()

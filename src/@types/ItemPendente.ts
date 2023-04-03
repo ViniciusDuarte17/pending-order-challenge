@@ -1,5 +1,8 @@
 
 export type ItemPendente = {
-  id: number;
-  item_pendente: number;
+  id: number,
+  numeroItem: number,
+  valorTotalPedido:string,
+  ValorTotalDeItemPentende: string
+  produtoPendente: number
 };
