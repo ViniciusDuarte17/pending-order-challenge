@@ -5,7 +5,7 @@ import { Pedidotype } from "../@types/pedido";
 
 class PedidosPendentes {
 
-   async identificarPedidosPendentes (pedidos: Pedidotype[], notas: NotaType[]) {
+   async identificarPedidosPendentes (pedidos: Pedidotype[], notas: NotaType[]):Promise<ItemPendente[]> {
 
     const pedidosPendentes:ItemPendente[]  = []
 
